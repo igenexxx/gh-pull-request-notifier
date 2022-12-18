@@ -1,0 +1,24 @@
+name: Deployment
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'develop'
+      - 'master'
+      - 'main'
+      - 'test/**'
+jobs:
+  lint:
+    env:
+      TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          cd .github/actions/submit-pr-notification
+          npm install
+      - name: Check context
+        uses: ./.github/actions/submit-pr-notification
