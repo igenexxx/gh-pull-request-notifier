@@ -5,13 +5,13 @@ function getTeamsMessage(response) {
         'themeColor': '0072C6',
         'summary': "Pull requests is waiting for code review",
         'sections': [{
-            'activityTitle': `${ response.title }`,
+            'activityTitle': `${ response.pull_request.title }`,
             'activitySubtitle': `On ${ response.pull_request.base.full_name }`,
             'activityImage': response.user.avatar_url,
             'facts': [
                 {
                     'name': 'Author',
-                    'value': response.user.login
+                    'value': response.pull_request.user.login
                 },
                 {
                     'name': 'Created',

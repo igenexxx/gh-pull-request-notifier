@@ -8,14 +8,10 @@ on:
       - 'master'
       - 'main'
       - 'test/**'
-  push:
-    branches:
-      - 'develop'
-      - 'master'
-      - 'main'
-      - 'test/**'
 jobs:
   lint:
+    env:
+      TEAMS_WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
