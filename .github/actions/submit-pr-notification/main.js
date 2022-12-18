@@ -3,8 +3,9 @@ const github = require('@actions/github');
 const getTeamsMessage = require("./getTeamsMessage");
 
 
-console.log(github.context);
+// console.log(github.context);
 
 (async () => {
-    await axios.post(process.env.TEAMS_WEBHOOK_URL, getTeamsMessage(github.context.payload));
+    console.log(github.context.pull_request.user);
+    // await axios.post(process.env.TEAMS_WEBHOOK_URL, getTeamsMessage(github.context.payload));
 })();
