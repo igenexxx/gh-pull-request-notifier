@@ -8,12 +8,6 @@ on:
       - 'master'
       - 'main'
       - 'test/**'
-  push:
-    branches:
-      - 'develop'
-      - 'master'
-      - 'main'
-      - 'test/**'
 jobs:
   lint:
     env:

@@ -7,7 +7,7 @@ function getTeamsMessage(response) {
         'sections': [{
             'activityTitle': `${ response.pull_request.title }`,
             'activitySubtitle': `On ${ response.pull_request.base.full_name }`,
-            'activityImage': response.user.avatar_url,
+            'activityImage': response.pull_request.user.avatar_url,
             'facts': [
                 {
                     'name': 'Author',
