@@ -6,31 +6,36 @@ function getTeamsMessage(response) {
         'summary': "Pull requests is waiting for code review",
         'sections': [{
             'activityTitle': `${ response.title }`,
-            'activitySubtitle': `On ${ response.source.repository.name }`,
-            'activityImage': response.author.links.avatar.href,
+            'activitySubtitle': `On ${ response.pull_request.base.full_name }`,
+            'activityImage': response.user.avatar_url,
             'facts': [
                 {
                     'name': 'Author',
-                    'value': response.author.display_name
+                    'value': response.user.login
                 },
                 {
                     'name': 'Created',
-                    'value': response.created_on
+                    'value': response.pull_request.created_at
                 },
                 {
                     'name': 'Destination',
-                    'value': response.destination.branch.name
+                    'value': response.pull_request.base.ref
                 },
                 {
-                    'name': 'Approves',
-                    'value': response.participants
-                        .filter(participant => participant.approved)
-                        .map(participant => participant.user.display_name)
-                        .join(' | ')
+                    'name': 'Additions',
+                    'value': response.pull_request.additions
+                },
+                {
+                    'name': 'Delitions',
+                    'value': response.pull_request.deletions
+                },
+                {
+                    'name': 'Changed files',
+                    'value': response.pull_request.changed_files
                 },
                 {
                     'name': 'Link to PullRequest',
-                    'value': `[Go to the pull request page](${ response.links.html.href })`
+                    'value': `[Go to the pull request page](${ response.pull_request._links.html.href })`
                 } ],
             'markdown': true
         }]

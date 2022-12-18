@@ -1,0 +1,5 @@
+name: 'Send PR notification'
+description: 'Send PR notification to the teams'
+runs:
+  using: node16
+  main: 'main.js'
