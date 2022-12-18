@@ -1,0 +1,17 @@
+name: Deployment
+on:
+  pull_request:
+    types:
+      - opened
+    branches:
+      - 'develop'
+      - 'master'
+      - 'main'
+      - 'test/**'
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get PR info
+        run: |
+          echo "github info: ${{ toJson(github.event) }}"
